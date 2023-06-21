@@ -29,7 +29,17 @@ function generateFrame(frame) {
 
   // Insert the generated HTML into the page
   document.body.innerHTML += headerTemplate + footerTemplate;
+  // Set the title tag
+  document.title = `${fw.name} / [herc.se]`;
+
+  // Set the favicon
+  const link = document.createElement("link");
+  link.rel = "icon";
+  link.href = fw.favicon;
+  document.head.appendChild(link);
 }
+
+// CSS的部分
 
 function addStyles(css) {
   const style = document.createElement("style");
