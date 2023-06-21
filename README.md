@@ -1,48 +1,88 @@
-# fw
-Frame Work Base, Tools for harming a unified web framework.
+# Frame Generator Documentation
 
-The `generateFrame` function is used to create a customizable header and footer for a web page. It can be easily called and configured with the desired content. In order to use this, you will first need to include the `fw.js` script in your HTML file:
+## Overview
+The Frame Generator is a JavaScript-based script that can help you create a dynamic web frame with customizable headers and footers. The generated frame features an embedded `header` at the top, including two components `src` and `menu`, and a `footer` at the bottom containing additional information.
 
+## How to use
+To use the Frame Generator, follow these steps:
+
+1. Include the external CDN in the head of your HTML document:
 ```html
-<script src="fw.js"></script>
+<script src="https://fw.herc.se/fw.js"></script>
 ```
 
-## Usage
-
-To call the `generateFrame` function, you need to create an object containing the necessary information and pass it as a parameter. Here's an example of how to define the object:
+2. Add the following JavaScript code right before the closing `</body>` tag in your HTML document:
 
 ```javascript
 const fw = {
-    name: "Comic Collocation",
-    Info: `...`,
-    header: {
-        src: ` * <input type="text" id="search-input" name="search-input" placeholder="Search..." />`,
-        menu: `<div id="toggle-mode-container">
-            <input type="checkbox" id="toggle-mode-checkbox" />
-            <label for="toggle-mode-checkbox">[三/㗊]</label>
-          </div>
-          <div id="select-all-container">
-            <input type="checkbox" id="select-all-checkbox" />
-            <label for="select-all-checkbox">[Collapse]</label>
-          </div>`
-    }
+  name: "Comic Collocation",
+  Info: "Additional footer info...",
+  header: {
+    src: ' * <input type="text" id="search-input" name="search-input" placeholder="Search..." />',
+    menu: `<div id="toggle-mode-container">
+      <input type="checkbox" id="toggle-mode-checkbox" />
+      <label for="toggle-mode-checkbox">[三/㗊]</label>
+    </div>
+    <div id="select-all-container">
+      <input type="checkbox" id="select-all-checkbox" />
+      <label for="select-all-checkbox">[Collapse]</label>
+    </div>`,
+  },
 };
-```
 
-After defining the `fw` object, call the `generateFrame` function like this:
-
-```javascript
+// Call the function to generate and insert the HTML
 generateFrame(fw);
 ```
 
+Make sure to replace the values inside `fw` object according to your needs.
+
+
 ## Configuration
 
-The `fw` object consists of several properties that control the appearance of the header and footer:
+You can customize the frame by modifying the properties of the `fw` object:
 
-- **name**: The title of the web page. Appears in the header's left section.
-- **Info**: The content of the footer. This can be any valid HTML content.
-- **header**: An object containing two properties:
-  - **src**: HTML content that will appear on the left side of the header, after the path and title.
-  - **menu**: HTML content that will appear on the right side of the header, aligned to the right.
+- `name`: (Required) The main title of the frame.
+- `Info`: (Optional) Additional information to be displayed in the footer.
+- `header.src`: (Optional) Any HTML content to show on the left side of the header.
+- `header.menu`: (Optional) Any HTML content to show on the right side of the header.
 
-All properties, except for the `name`, can include any valid HTML content to be embedded in the respective sections of the header and footer.
+## Technical Details
+
+The Frame Generator uses two functions, `generateFrame()` and `addStyles()`, to create the frame by generating and inserting the necessary HTML and CSS into the document.
+
+### Function: generateFrame(frame)
+
+This function accepts a single parameter, `frame`, which is an object containing the configuration data for the frame. It generates the header and footer HTML templates and inserts them into the page.
+
+### Function: addStyles(css)
+
+This function takes a single parameter, `css`. It creates a new `<style>` element within the document's head and appends the provided CSS styles.
+
+The default styling for the frame is provided as a string. To add custom styles, simply modify the `styles` variable or include your own additional stylesheet in the HTML document.
+
+## Example Usage
+
+For example, if you want to create a frame with a different title, update the `name` property in the `fw` object:
+
+```javascript
+const fw = {
+  name: "My Custom Frame",
+  Info: "Additional footer info...",
+  header: {
+    src: ' * <input type="text" id="search-input" name="search-input" placeholder="Search..." />',
+    menu: `<div id="toggle-mode-container">
+      <input type="checkbox" id="toggle-mode-checkbox" />
+      <label for="toggle-mode-checkbox">[三/㗊]</label>
+    </div>
+    <div id="select-all-container">
+      <input type="checkbox" id="select-all-checkbox" />
+      <label for="select-all-checkbox">[Collapse]</label>
+    </div>`,
+  },
+};
+
+// Call the function to generate and insert the HTML
+generateFrame(fw);
+```
+
+This will generate a frame with the title "My Custom Frame" instead of "Comic Collocation".
