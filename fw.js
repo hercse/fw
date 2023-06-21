@@ -19,7 +19,7 @@ function generateFrame(frame) {
             <label for="">[!] <input type="checkbox" name="" id="" /></label>
           </div>
           <div class="copyright">
-            Copyright © 2022 Hercse. All rights reserved.
+            Copyright © ${new Date().getFullYear()} Hercse. All rights reserved.
           </div>
         </div>
         <div class="about">
